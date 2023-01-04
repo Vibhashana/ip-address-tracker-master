@@ -1,0 +1,39 @@
+{
+  "name": "bookmark-landing-page",
+  "version": "0.1.0",
+  "description": "The solution to the Bookmark landing page challenge on Frontend Mentor (https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158).",
+  "main": "public/index.html",
+  "author": "Sahan Bandara",
+  "scripts": {
+    "build:sass": "sass --no-source-map src/sass:public/css",
+    "build:js": "babel src/js --out-file public/js/script.js",
+    "uglifyjs": "uglifyjs \"public/js/script.js\" --compress --mangle --output \"public/js/script.js\"",
+    "copy:html": "copyfiles -u 1 ./src/*.html public",
+    "copy:images": "imagemin ./src/images/**/* --out-dir=public/images",
+    "copy": "npm-run-all --parallel copy:*",
+    "watch:html": "onchange \"src/*.html\" -- npm run copy:html",
+    "watch:images": "onchange \"src/images/**/*\" -- npm run copy:images",
+    "watch:sass": "sass --watch src/sass:public/css",
+    "watch:js": "babel src/js --watch --out-file public/js/script.js",
+    "watch": "npm-run-all --parallel watch:*",
+    "serve": "browser-sync start --server public --files public",
+    "start": "npm-run-all copy --parallel watch serve",
+    "build": "npm-run-all copy:html copy:images build:* uglifyjs",
+    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^5.0.17",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-svgo": "^10.0.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
+    "sass": "^1.49.8",
+    "uglify-js": "^3.17.4"
+  }
+}

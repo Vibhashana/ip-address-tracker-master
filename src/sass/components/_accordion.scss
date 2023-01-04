@@ -1,0 +1,39 @@
+.accordion {
+  --flow-space: var(--size-800);
+  text-align: start;
+  margin-bottom: var(--size-600);
+  max-width: 33.75rem;
+  margin-inline: auto;
+  border-bottom: 1px solid var(--clr-neutral-150);
+
+  &__toggle {
+    border-top: 1px solid var(--clr-neutral-150);
+    transition: color 0.2s ease-in-out;
+    color: var(--clr-primary-700);
+
+    &:hover {
+      color: var(--clr-secondary-400);
+    }
+
+    &--open .accordion__icon {
+      color: var(--clr-secondary-400);
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__icon {
+    color: var(--clr-primary-400);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  &__body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-in-out;
+
+    p {
+      margin-block: var(--size-600);
+      max-width: max-content;
+    }
+  }
+}

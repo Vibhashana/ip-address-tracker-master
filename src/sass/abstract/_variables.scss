@@ -1,0 +1,71 @@
+$colors: (
+  "primary": (
+    800: hsl(229 75% 10% / 90%),
+    700: hsl(229, 31%, 21%),
+    400: hsl(231, 69%, 60%),
+  ),
+  "secondary": (
+    400: hsl(0, 94%, 66%),
+  ),
+  "neutral": (
+    400: hsl(240, 6%, 41%),
+    300: hsl(229, 8%, 60%),
+    200: hsl(0, 0%, 97%),
+    150: hsl(0 0% 0% / 15%),
+    100: hsl(0, 0%, 100%),
+  ),
+);
+
+$sizes: (
+  100: 0.25rem,
+  200: 0.8125rem,
+  300: 0.875rem,
+  400: 1rem,
+  500: 1.5rem,
+  600: 2rem,
+  700: 3rem,
+  800: 4rem,
+  900: 5rem,
+);
+
+:root {
+  //Font family
+  --ff-primary: "Rubik", sans-serif;
+
+  --ff-body: var(--ff-primary);
+
+  //Colours
+  @each $type, $variants in $colors {
+    @each $variant, $color in $variants {
+      --clr-#{$type}-#{$variant}: #{$color};
+    }
+  }
+
+  //Font sizes
+  --fs-400: 1rem;
+  --fs-500: 1.1875rem;
+  --fs-600: 1.125rem;
+  --fs-700: 1.25rem;
+  --fs-800: 1.5rem;
+  --fs-900: clamp(2rem, 3vw + 1rem, 3rem);
+
+  //Font weights
+  --fw-regular: 400;
+  --fw-bold: 500;
+
+  //Sizes
+  @each $variant, $size in $sizes {
+    --size-#{$variant}: #{$size};
+  }
+
+  //Screen sizes
+  --sz-mobile: 40em; //23.4375em
+  --sz-desktop: 1440px;
+}
+
+@media (min-width: 40em) {
+  :root {
+    --fs-400: 1.125rem;
+    --fs-800: 2rem;
+  }
+}

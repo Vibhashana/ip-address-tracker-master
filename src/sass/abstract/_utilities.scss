@@ -1,0 +1,120 @@
+@use "variables" as *;
+
+@each $type, $variants in $colors {
+  @each $variant, $color in $variants {
+    .text-#{$type}-#{$variant} {
+      color: var(--clr-#{$type}-#{$variant});
+    }
+
+    .bg-#{$type}-#{$variant} {
+      background-color: var(--clr-#{$type}-#{$variant});
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+:where(.flow > :not(:first-child)) {
+  margin-top: var(--flow-space, 1em);
+}
+
+.ml-auto {
+  margin-inline-start: auto;
+}
+
+.mr-auto {
+  margin-inline-end: auto;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.mt-auto {
+  margin-block-start: auto;
+}
+
+.mb-auto {
+  margin-block-end: auto;
+}
+
+.my-auto {
+  margin-inline: auto;
+}
+
+@each $variant, $size in $sizes {
+  .py-#{$variant} {
+    padding-block: var(--size-#{$variant});
+  }
+}
+
+.text-center {
+  text-align: center;
+
+  h2 + p:not([class]) {
+    margin-inline: auto;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (min-width: 40em) {
+  .hidden-lg {
+    display: none;
+  }
+}
+
+.decorative {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: calc(var(--size-500) * -1);
+    right: 0;
+    aspect-ratio: 4 / 3;
+    width: 75%;
+    background-color: var(--clr-primary-400);
+    border-radius: 100vmax 0 0 100vmax;
+    box-shadow: 10em 0 0 0 var(--clr-primary-400),
+      20em 0 0 0 var(--clr-primary-400), 30em 0 0 0 var(--clr-primary-400);
+    z-index: -1;
+  }
+
+  &--left {
+    padding-bottom: var(--size-700);
+
+    &::after {
+      right: auto;
+      left: 0;
+      aspect-ratio: 4 / 3.55;
+      border-radius: 0 100vmax 100vmax 0;
+      box-shadow: -10em 0 0 0 var(--clr-primary-400),
+        -20em 0 0 0 var(--clr-primary-400), -30em 0 0 0 var(--clr-primary-400);
+    }
+  }
+}

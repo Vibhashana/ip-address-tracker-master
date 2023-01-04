@@ -1,0 +1,41 @@
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--clr-primary-700);
+  font-weight: var(--fw-bold);
+}
+
+h1,
+.h1 {
+  font-size: var(--fs-900);
+  line-height: 1.1;
+}
+
+h2,
+.h2 {
+  font-size: var(--fs-800);
+  line-height: 1.25;
+}
+
+h3,
+.h3 {
+  font-size: var(--fs-700);
+  line-height: 1.25;
+}
+
+p {
+  margin-block-end: var(--size-400);
+}
+
+p:not([class]) {
+  max-width: 47ch;
+}

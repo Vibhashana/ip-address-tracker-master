@@ -1,0 +1,136 @@
+.navigation {
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+  }
+
+  &--secondary &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-500);
+    margin-bottom: var(--size-500);
+
+    @media (min-width: 40rem) {
+      flex-direction: row;
+      margin-bottom: 0;
+      margin-left: var(--size-600);
+      gap: var(--size-700);
+    }
+  }
+}
+
+.primary-header {
+  padding-top: var(--size-700);
+
+  &__nav-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 40em) {
+  .navigation--primary {
+    display: none;
+
+    &[data-visible] {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      background-color: var(--clr-primary-800);
+      inset: 4.56rem 0 0 0;
+      padding: var(--size-600);
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    .navigation__nav-list {
+      max-height: 100%;
+      overflow-y: auto;
+
+      li {
+        border-top: 1px solid hsl(0deg 0% 97% / 15%);
+      }
+
+      a {
+        display: block;
+        text-align: center;
+        padding-block: var(--size-400);
+        color: var(--clr-neutral-100);
+        font-size: var(--size-400);
+        letter-spacing: 0.15em;
+      }
+
+      .btn {
+        --btn-color: var(--clr-neutral-100);
+        margin-top: var(--size-500);
+        background-color: transparent;
+      }
+    }
+  }
+
+  .primary-header__nav-btn {
+    display: block;
+    background-color: transparent;
+  }
+
+  .primary-header__nav-btn-close {
+    display: none;
+  }
+
+  [aria-expanded="true"] {
+    .primary-header__nav-btn-open {
+      display: none;
+    }
+    .primary-header__nav-btn-close {
+      display: block;
+    }
+  }
+
+  body[data-nav-open] {
+    overflow-y: hidden;
+
+    .primary-header {
+      --logo-text: var(--clr-neutral-100);
+      --logo-icon: var(--clr-primary-700);
+      --logo-circle: var(--clr-neutral-100);
+      background-color: var(--clr-primary-800);
+
+      .bookmark-circle,
+      .bookmark-text {
+        fill: var(--clr-neutral-100);
+      }
+
+      .bookmark-icon {
+        fill: var(--clr-primary-700);
+      }
+    }
+  }
+}
+
+.navigation--secondary a {
+  color: var(--clr-neutral-100);
+}
+
+@media (min-width: 40em) {
+  .navigation__nav-list {
+    display: flex;
+    gap: var(--size-600);
+    align-items: center;
+
+    a {
+      font-size: var(--size-200);
+
+      &:hover {
+        color: var(--clr-secondary-400);
+      }
+
+      &.btn {
+        padding-inline: 2.5em;
+      }
+    }
+  }
+
+  .navigation--primary a:where(:not(.btn)) {
+    color: var(--clr-primary-700);
+  }
+}

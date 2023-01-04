@@ -1,0 +1,12 @@
+.even-columns {
+  --gap: 1rem;
+  display: grid;
+  gap: var(--gap);
+}
+
+@media (min-width: 40em) {
+  .even-columns {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}

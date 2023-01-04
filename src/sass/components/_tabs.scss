@@ -1,0 +1,77 @@
+.tabs {
+  margin-top: var(--size-700);
+
+  &__link {
+    position: relative;
+    width: 100%;
+    padding-block: var(--size-400);
+    border-bottom: 1px solid var(--clr-neutral-150);
+    color: var(--clr-neutral-300);
+
+    &:not([aria-selected="true"]):hover,
+    &:not([aria-selected="true"]):focus-visible {
+      color: var(--clr-secondary-400);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      transform: scaleX(0);
+      height: 0.25em;
+      background-color: var(--clr-secondary-400);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &::before {
+      left: 25%;
+      right: 50%;
+      transform-origin: right;
+    }
+
+    &::after {
+      left: 50%;
+      right: 25%;
+      transform-origin: left;
+    }
+
+    &[aria-selected="true"] {
+      color: var(--clr-primary-700);
+
+      &::before,
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__list {
+    border-top: 1px solid var(--clr-neutral-150);
+    margin-bottom: var(--size-800);
+
+    @media (min-width: 40em) {
+      margin-inline: auto;
+      max-width: 45.85rem;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      border-top: none;
+    }
+  }
+
+  &__tab-pane {
+    --gap: var(--size-900);
+    text-align: center;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  @media (min-width: 40em) {
+    &__tab-pane {
+      text-align: start;
+    }
+  }
+}
