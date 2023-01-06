@@ -40,6 +40,7 @@ main {
   &__data {
     font-size: 20px;
     font-weight: var(--fw-semi-bold);
+    word-break: break-word;
   }
 }
 
