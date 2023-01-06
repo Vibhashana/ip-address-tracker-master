@@ -1,37 +1,31 @@
-const api = "https://geo.ipify.org/api/v2/country,city"; //"https://geo.ipify.org/api/v2/country,city"
+const api = "https://geo.ipify.org/api/v2/country,city";
 
-const createMap = (lat, lan) => {
-  // Creating map options
-  const mapOptions = {
-    center: [lat, lan],
-    zoom: 15,
-  };
+const map = L.map("map").setView([51.505, -0.09], 13);
 
-  const mapMarker = L.icon({
-    iconUrl: "../images/icon-location.svg",
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
 
-    iconSize: [46, 56],
-    iconAnchor: [23, 56],
-  });
+const mapMarker = L.icon({
+  iconUrl: "../images/icon-location.svg",
 
-  const container = L.DomUtil.get("map");
-  if (container != null) {
-    container._leaflet_id = null;
-  }
+  iconSize: [46, 56],
+  iconAnchor: [23, 56],
+});
 
-  // Creating a map object
-  const map = new L.map("map", mapOptions);
+const marker = L.marker([51.505, -0.09], { icon: mapMarker }).addTo(map);
 
-  const marker = L.marker(mapOptions.center, { icon: mapMarker }).addTo(map);
+let layerGroup = L.layerGroup().addTo(map);
 
-  // Creating a Layer object
-  const layer = new L.TileLayer(
-    "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  );
-
-  // Adding layer to the map
-  map.addLayer(layer);
+const setCoordinates = (lat, lon) => {
+  layerGroup.clearLayers();
+  map.setView([lat, lon]);
+  const marker = L.marker([lat, lon], { icon: mapMarker }).addTo(layerGroup);
 };
+
+setCoordinates(7.3592743, 80.7113022);
 
 const fetchDetails = async (ipAddress, domain) => {
   const endpoint = new URL(api);
@@ -49,6 +43,7 @@ const fetchDetails = async (ipAddress, domain) => {
   const response = await fetch(endpoint);
 
   if (response.status !== 200) {
+    displayErrors("Sorry, nothing found. Please try again.");
     return;
   }
 
@@ -68,7 +63,7 @@ const fetchDetails = async (ipAddress, domain) => {
     : "N/A";
   isp.innerHTML = data.isp ? data.isp : "N/A";
 
-  createMap(data.location.lat, data.location.lng);
+  setCoordinates(data.location.lat, data.location.lng);
 };
 
 const validateIpAddress = (ipAddress) => {
@@ -95,31 +90,49 @@ const validateDomainAddress = (domain) => {
   return regEx.test(domain);
 };
 
-// fetchDetails();
-// createMap("7.3548286", "80.7115405");
+fetchDetails();
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  clearErrors();
 
   const ipAddress = document.getElementById("ip-input").value;
 
   if (!ipAddress) {
-    alert("Add an IP address");
+    displayErrors("Add a valid IP address or a valid domain.");
     return;
   }
 
   if (validateIpAddress(ipAddress)) {
-    // alert("Valid IP address");
     fetchDetails(ipAddress);
     return;
   } else if (validateDomainAddress(ipAddress)) {
-    // alert("Valid domain address");
     fetchDetails(null, ipAddress);
     return;
   } else {
-    alert("Neither valid IP address nor domain address");
+    displayErrors(
+      "Neither a valid IP address nor a valid domain. Please check and try again."
+    );
     return;
   }
+};
+
+const displayErrors = (message) => {
+  const form = document.getElementById("form");
+  const errorMsg = document.getElementById("form-feedback");
+
+  errorMsg.innerHTML = message;
+  form.classList.add("has-error");
+  errorMsg.setAttribute("aria-hidden", false);
+};
+
+const clearErrors = () => {
+  const form = document.getElementById("form");
+  const errorMsg = document.getElementById("form-feedback");
+
+  errorMsg.innerHTML = "";
+  form.classList.remove("has-error");
+  errorMsg.setAttribute("aria-hidden", true);
 };
 
 document.querySelector("form").addEventListener("submit", handleSubmit);

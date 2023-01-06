@@ -30,15 +30,15 @@ main {
   z-index: 1;
 
   &__heading {
-    font-size: 10px;
+    font-size: 0.625rem;
     font-weight: var(--fw-bold);
     text-transform: uppercase;
     color: var(--clr-neutral-200);
-    letter-spacing: 2px;
+    letter-spacing: 0.2em;
   }
 
   &__data {
-    font-size: 20px;
+    font-size: clamp(1.25rem, 5vw + 1rem, 1.625rem);
     font-weight: var(--fw-semi-bold);
     word-break: break-word;
   }
@@ -58,11 +58,11 @@ main {
     padding: var(--size-600);
 
     &__heading {
-      font-size: 13px;
+      font-size: var(--size-200);
     }
 
     &__data {
-      font-size: 26px;
+      font-size: 1.625rem;
       margin-top: 0.35em;
     }
 

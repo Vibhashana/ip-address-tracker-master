@@ -9,6 +9,7 @@
 
   &__group {
     display: flex;
+    position: relative;
   }
 
   &__input {
@@ -22,49 +23,32 @@
   }
 
   &__feedback {
-    background-color: transparent;
+    background-color: var(--clr-secondary-400);
     color: var(--clr-neutral-100);
-    display: block;
     margin-top: -0.33em;
-    border-radius: var(--size-400) 0 0 var(--size-400);
-    font-size: var(--fs-400);
-    font-style: italic;
+    border-radius: var(--size-200);
+    font-size: 0.875rem;
     text-align: start;
     padding: 0.5em 1em;
     transform: translateY(-2.5em);
-    opacity: 0;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-    &--error {
-      background-color: var(--clr-secondary-400);
-    }
-  }
-
-  &__feedback-icon {
     position: absolute;
-    right: 1em;
-    top: 0.9em;
-    z-index: 1;
-    transform: scale(0);
-    transition: transform 0.2s ease-in-out;
-  }
+    opacity: 0;
+    transform: translateY(-1.5rem);
+    left: 0;
+    right: 0;
+    top: 3.75rem;
+    z-index: -1;
 
-  &--has-error,
-  input:invalid {
-    ~ .form__feedback-icon {
-      transform: scale(1);
+    &[aria-hidden="false"] {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 2;
     }
   }
 
-  &--has-error .form__feedback,
-  input:invalid ~ .form__feedback {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  &__input-control {
-    position: relative;
-    z-index: 1;
+  &.has-error input {
+    box-shadow: 0 0 0 2px var(--clr-secondary-400) inset;
   }
 }
 
@@ -85,13 +69,5 @@ input {
 
   &::placeholder {
     color: var(--clr-neutral-200);
-  }
-}
-
-@media (min-width: 40em) {
-  .form__feedback {
-    position: absolute;
-    left: 0;
-    right: 0;
   }
 }

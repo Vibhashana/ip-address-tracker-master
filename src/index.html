@@ -43,6 +43,11 @@
                 placeholder="Search for any IP address or domain"
                 autofocus
               />
+              <div
+                class="form__feedback"
+                id="form-feedback"
+                aria-hidden="true"
+              ></div>
               <button
                 class="button"
                 type="submit"
@@ -64,19 +69,19 @@
           <div class="details | card">
             <div class="details__col">
               <span class="details__heading">IP Address</span>
-              <div class="details__data" id="ip">192.212.174.101</div>
+              <div class="details__data" id="ip">(Loading...)</div>
             </div>
             <div class="details__col">
               <span class="details__heading">Location</span>
-              <div class="details__data" id="location">Brooklyn, NY 10001</div>
+              <div class="details__data" id="location">(Loading...)</div>
             </div>
             <div class="details__col">
               <span class="details__heading">Timezone</span>
-              <div class="details__data" id="timezone">UTC-05:00</div>
+              <div class="details__data" id="timezone">(Loading...)</div>
             </div>
             <div class="details__col">
               <span class="details__heading">ISP</span>
-              <div class="details__data" id="isp">SpaceX Starlink</div>
+              <div class="details__data" id="isp">(Loading...)</div>
             </div>
           </div>
         </div>
