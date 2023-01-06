@@ -5,19 +5,11 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--clr-primary-700);
-  font-weight: var(--fw-bold);
-}
-
-h1,
 .h1 {
   font-size: var(--fs-900);
   line-height: 1.1;
+  margin-bottom: var(--size-600);
+  font-weight: var(--fw-semi-bold);
 }
 
 h2,

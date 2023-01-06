@@ -19,15 +19,65 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href".css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="js/script.js" defer></script>
     <title>Frontend Mentor | IP Address Tracker</title>
   </head>
   <body>
-    <main></main>
+    <main>
+      <section class="top | py-600">
+        <div class="container">
+          <h1 class="text-neutral-100 text-center">IP Address Tracker</h1>
 
-    IP Address Tracker Search for any IP address or domain IP Address Location
-    Timezone UTC
+          <form class="form" id="form">
+            <div class="form__group">
+              <input
+                type="search"
+                placeholder="Search for any IP address or domain"
+                autofocus
+              />
+              <button
+                class="button"
+                type="submit"
+                aria-label="Search"
+                title="Search"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+                  <path
+                    fill="none"
+                    stroke="#FFF"
+                    stroke-width="3"
+                    d="M2 1l6 6-6 6"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="details | card">
+            <div class="details__col">
+              <span class="details__heading">IP Address</span>
+              <div class="details__data" id="ip">192.212.174.101</div>
+            </div>
+            <div class="details__col">
+              <span class="details__heading">Location</span>
+              <div class="details__data" id="location">Brooklyn, NY 10001</div>
+            </div>
+            <div class="details__col">
+              <span class="details__heading">Timezone</span>
+              <div class="details__data" id="timezone">UTC-05:00</div>
+            </div>
+            <div class="details__col">
+              <span class="details__heading">ISP</span>
+              <div class="details__data" id="isp">SpaceX Starlink</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="map" id="map"></div>
+    </main>
     <!-- add offset value dynamically using the API -->
-    ISP
+    <!-- ISP -->
   </body>
 </html>

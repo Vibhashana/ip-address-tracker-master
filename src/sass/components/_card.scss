@@ -1,32 +1,5 @@
 .card {
   box-shadow: 0 0.825em 1em hsl(0 0% 0% / 10%);
   border-radius: var(--size-400);
-  flex: 1;
-
-  &__body {
-    padding-inline: var(--size-200);
-  }
-
-  &__img {
-    padding-top: var(--size-700);
-  }
-
-  &__title {
-    --flow-space: var(--size-600);
-    font-weight: var(--fw-bold);
-    color: var(--clr-primary-700);
-  }
-
-  &__text {
-    --flow-space: var(--size-100);
-    font-size: 1rem;
-  }
-
-  &__footer {
-    background-image: url(../images/bg-dots.svg);
-    background-position-x: 0;
-    background-repeat: repeat-x;
-    padding: var(--size-500);
-    margin-top: var(--size-600);
-  }
+  background-color: var(--clr-neutral-100);
 }

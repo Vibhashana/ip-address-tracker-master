@@ -1,6 +1,15 @@
 .form {
-  grid-auto-columns: 1fr auto;
-  --flow-space: var(--size-600);
+  margin-bottom: var(--size-500);
+  max-width: 35rem;
+  margin-inline: auto;
+
+  @media (min-width: 40em) {
+    margin-bottom: var(--size-700);
+  }
+
+  &__group {
+    display: flex;
+  }
 
   &__input {
     position: relative;
@@ -17,8 +26,8 @@
     color: var(--clr-neutral-100);
     display: block;
     margin-top: -0.33em;
-    border-radius: 0 0 0.375em 0.375em;
-    font-size: 0.75rem;
+    border-radius: var(--size-400) 0 0 var(--size-400);
+    font-size: var(--fs-400);
     font-style: italic;
     text-align: start;
     padding: 0.5em 1em;
@@ -62,21 +71,20 @@
 input {
   width: 100%;
   background-color: var(--clr-neutral-100);
-  font-size: var(--size-300);
-  padding: 0.97em 1.5em;
-  border-radius: 0.375em;
-  border: 2px solid transparent;
-  color: var(--clr-primary-700);
-  transition: border-color 0.2s ease-in-out;
+  font-size: var(--fs-400);
+  padding: 0.8333em 1.5em;
+  border-radius: var(--size-400) 0 0 var(--size-400);
+  color: var(--clr-neutral-400);
+  transition: box-shadow 0.2s ease-in-out;
 
   &:focus-visible,
   &:active {
     outline: none;
-    border-color: var(--clr-neutral-300);
+    border-color: var(--clr-neutral-400);
   }
 
   &::placeholder {
-    color: var(--clr-neutral-300);
+    color: var(--clr-neutral-200);
   }
 }
 

@@ -1,17 +1,10 @@
 $colors: (
-  "primary": (
-    800: hsl(229 75% 10% / 90%),
-    700: hsl(229, 31%, 21%),
-    400: hsl(231, 69%, 60%),
-  ),
-  "secondary": (
-    400: hsl(0, 94%, 66%),
-  ),
   "neutral": (
-    400: hsl(240, 6%, 41%),
-    300: hsl(229, 8%, 60%),
-    200: hsl(0, 0%, 97%),
-    150: hsl(0 0% 0% / 15%),
+    900: hsl(0, 0%, 0%),
+    400: hsl(0, 0%, 17%),
+    300: hsl(0, 0%, 25%),
+    200: hsl(0, 0%, 59%),
+    150: hsl(0, 0%, 85%),
     100: hsl(0, 0%, 100%),
   ),
 );
@@ -42,16 +35,17 @@ $sizes: (
   }
 
   //Font sizes
-  --fs-400: 1rem;
+  --fs-400: 1.125rem;
   --fs-500: 1.1875rem;
   --fs-600: 1.125rem;
   --fs-700: 1.25rem;
   --fs-800: 1.5rem;
-  --fs-900: clamp(2rem, 3vw + 1rem, 3rem);
+  --fs-900: clamp(1.625rem, 3vw + 1rem, 2rem); //clamp(2rem, 3vw + 1rem, 3rem)
 
   //Font weights
   --fw-regular: 400;
-  --fw-bold: 500;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
 
   //Sizes
   @each $variant, $size in $sizes {
@@ -64,8 +58,8 @@ $sizes: (
 }
 
 @media (min-width: 40em) {
-  :root {
-    --fs-400: 1.125rem;
-    --fs-800: 2rem;
-  }
+  // :root {
+  //   --fs-400: 1.125rem;
+  //   --fs-800: 2rem;
+  // }
 }
