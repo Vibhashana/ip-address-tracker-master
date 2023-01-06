@@ -1,6 +1,6 @@
 const api = "https://geo.ipify.org/api/v2/country,city";
 
-const map = L.map("map").setView([51.505, -0.09], 13);
+const map = L.map("map").setView([0, 0], 13);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -24,8 +24,6 @@ const setCoordinates = (lat, lon) => {
   map.setView([lat, lon]);
   const marker = L.marker([lat, lon], { icon: mapMarker }).addTo(layerGroup);
 };
-
-setCoordinates(7.3592743, 80.7113022);
 
 const fetchDetails = async (ipAddress, domain) => {
   const endpoint = new URL(api);
